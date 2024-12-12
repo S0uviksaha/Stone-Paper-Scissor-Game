@@ -4,6 +4,9 @@ let compScore = 0;
 let choices = document.querySelectorAll(".choice");
 let message = document.querySelector("#message");
 
+let updatedUserScore = document.querySelector("#your-score");
+let updatedCompScore = document.querySelector("#computer-score");
+
 choices.forEach((choice)=>{
     choice.addEventListener("click",()=>{
         let userChoice = choice.getAttribute("id");
@@ -42,19 +45,26 @@ const genCompChoice = () =>{
 
 const drawGame = () =>{
     console.log("Match Draw");
-    message.innerText = "Match Draw. Try again";
+    // message.innerText = "Match Draw. Try again";
+    message.innerText = "Match Draw.";
     message.style.backgroundColor = "red";
 };
 
 const showWin = (userWin, userChoice, compChoice) =>{
     if(userWin){
+        userScore++;
+        updatedUserScore.innerText = userScore;
         console.log("You Win");
-        message.innerText = `You win! Your ${userChoice} defeats ${compChoice}`;
+        // message.innerText = `You win! Your ${userChoice} defeats ${compChoice}`;
+        message.innerText = "You win!";
         message.style.backgroundColor = "green";
     }
     else{
+        compScore++;
+        updatedCompScore.innerText = compScore;
         console.log("You lose");
-        message.innerText = `You lose! ${compChoice} defeats Your ${userChoice}. Try Again`;
+        // message.innerText = `You lose! ${compChoice} defeats Your ${userChoice}. Try Again`;
+        message.innerText = "You lose."
         message.style.backgroundColor = "blue";
     }
 };
